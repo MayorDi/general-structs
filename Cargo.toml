@@ -1,0 +1,15 @@
+[package]
+name = "general-structs"
+version = "0.1.0"
+authors = ["Dmitriy Mayorov<MayorDi@yandex.ru>"]
+license = "Apache-2.0"
+rust-version = "1.68"
+repository = ""
+homepage = ""
+readme = "README.md"
+edition = "2021"
+
+[dependencies]
+
+[lib]
+proc-macro = true
