@@ -4,8 +4,8 @@ version = "0.1.0"
 authors = ["Dmitriy Mayorov<MayorDi@yandex.ru>"]
 license = "Apache-2.0"
 rust-version = "1.68"
-repository = ""
-homepage = ""
+repository = "https://github.com/MayorDi/general-structs"
+homepage = "https://github.com/MayorDi/general-structs"
 readme = "README.md"
 edition = "2021"
 

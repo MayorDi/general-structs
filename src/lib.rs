@@ -1,3 +1,17 @@
+// Copyright 2024 Dmitriy Mayorov
+
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+
+//     http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 extern crate proc_macro;
 
 use std::collections::HashMap;
@@ -15,17 +29,17 @@ pub fn general_structs(item: TokenStream) -> TokenStream {
     let mut is_features = false;
 
     for token in item.into_iter() {
-        // structs
+        // types
         if let TokenTree::Ident(ref ident) = token {
-            if ident.to_string() == "structs".to_string() {
+            if ident.to_string() == "types".to_string() {
                 is_types = true;
                 continue;
             }
         }
 
-        if let TokenTree::Punct(ref ch) = token {
+        if let TokenTree::Ident(ref ident) = token {
             if is_types {
-                is_types = !(ch.as_char() == ';');
+                is_types = !(ident.to_string() == "general".to_string());
             }
         }
 
@@ -76,14 +90,10 @@ pub fn general_structs(item: TokenStream) -> TokenStream {
 
     let mut res_str_structs = String::new();
     for ident in types_structs.iter() {
-        let mut structure = format!(
-            "struct {}",
-            ident.to_string()
-        );
+        let mut structure = format!("struct {}", ident.to_string());
 
         let group = general.stream().to_string();
         structure.push_str(format!("{{ {}", group.clone()).as_str());
-
 
         if let Some(group) = features_structs.get(&ident.clone().to_string()) {
             let group = group.stream().to_string();
@@ -95,6 +105,5 @@ pub fn general_structs(item: TokenStream) -> TokenStream {
         res_str_structs.push_str(structure.as_str());
     }
 
-    
     res_str_structs.as_str().parse().unwrap()
 }
