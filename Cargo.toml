@@ -1,6 +1,9 @@
 [package]
 name = "general-structs"
 version = "0.1.0"
+description = "General-structures - this library allows you to create structures with common fields, and those that are different can be specified individually."
+keywords = ["macros", "structures"]
+categories = ["development-tools::procedural-macro-helpers"]
 authors = ["Dmitriy Mayorov<MayorDi@yandex.ru>"]
 license = "Apache-2.0"
 rust-version = "1.68"
