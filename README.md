@@ -5,55 +5,36 @@ General-structs
 ## Example
 ``` rust
 general_structs! {
-    types
-        Foo1 Foo2 Foo3 Foo4 Foo5
-
-    general {
-        gen_bar1: f32,
-        gen_bar2: f32,
-        gen_bar3: f32,
-        gen_bar4: f32,
-        gen_bar5: f32,
+    #[derive(Debug, Clone, Copy)]
+    struct Foo1 + Foo2<T> + Foo3 {
+        bar1: f32,
+        pub bar2: usize,
     }
 
-    features
-        Foo1 {
-            spec_bar1: usize,
-            spec_bar2: i32
-        }
-        Foo2 {
-            spec_bar3: usize
-        }
+    Foo2<T> {
+        generic_bar: T
+    }
 }
 ```
 
 ### Result:
 ``` rust
+#[derive(Debug, Clone, Copy)]
 struct Foo1 {
-    gen_bar1: f32,
-    gen_bar2: f32,
-    gen_bar3: f32,
-    gen_bar4: f32,
-    gen_bar5: f32,
-    spec_bar1: usize,
-    spec_bar2: i32,
+    bar1: f32,
+    pub bar2: usize,
 }
 
-struct Foo2 {
-    gen_bar1: f32,
-    gen_bar2: f32,
-    gen_bar3: f32,
-    gen_bar4: f32,
-    gen_bar5: f32,
-    spec_bar3: usize,
+#[derive(Debug, Clone, Copy)]
+struct Foo2<T> {
+    bar1: f32,
+    pub bar2: usize,
+    generic_bar: T
 }
-
+    
+#[derive(Debug, Clone, Copy)]
 struct Foo3 {
-    gen_bar1: f32,
-    gen_bar2: f32,
-    gen_bar3: f32,
-    gen_bar4: f32,
-    gen_bar5: f32,
+    bar1: f32,
+    pub bar2: usize,
 }
-...
 ```

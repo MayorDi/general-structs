@@ -1,6 +1,6 @@
 [package]
 name = "general-structs"
-version = "0.1.0"
+version = "0.2.0"
 description = "General-structures - this library allows you to create structures with common fields, and those that are different can be specified individually."
 keywords = ["macros", "structures"]
 categories = ["development-tools::procedural-macro-helpers"]
@@ -13,6 +13,9 @@ readme = "README.md"
 edition = "2021"
 
 [dependencies]
+syn = "2.0.66"
+quote = "1.0.36"
+proc-macro2 = "1.0.84"
 
 [lib]
 proc-macro = true
